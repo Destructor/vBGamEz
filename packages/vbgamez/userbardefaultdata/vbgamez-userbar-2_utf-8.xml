@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<userbar name="Userbar light userbar" description="" background="./images/vbgamez/newuserbars/big3.jpg" textcolor="rgb(0,0,0)" font="./images/vbgamez/newuserbars/Georgia.ttf" fontsize="10" fieldname="global">
+	<config fontsize="8" radius="0" repeat_x="100" repeat_y="12" fontcolor="" font="" enabled="1" width="0"><![CDATA[Server name:]]></config>
+	<config fontsize="0" radius="0" repeat_x="5" repeat_y="10" fontcolor="" font="" enabled="1" width="90"><![CDATA[{mapimage}]]></config>
+	<config fontsize="0" radius="0" repeat_x="100" repeat_y="26" fontcolor="" font="" enabled="1" width="10"><![CDATA[{name}]]></config>
+	<config fontsize="8" radius="0" repeat_x="100" repeat_y="42" fontcolor="" font="" enabled="1" width="0"><![CDATA[IP address/port:]]></config>
+	<config fontsize="8" radius="0" repeat_x="233" repeat_y="70" fontcolor="" font="" enabled="1" width="0"><![CDATA[Players on server:]]></config>
+	<config fontsize="0" radius="0" repeat_x="100" repeat_y="56" fontcolor="" font="" enabled="1" width="0"><![CDATA[{ip}]]></config>
+	<config fontsize="0" radius="0" repeat_x="233" repeat_y="85" fontcolor="" font="" enabled="1" width="0"><![CDATA[{players}]]></config>
+	<config fontsize="8" radius="0" repeat_x="370" repeat_y="80" fontcolor="" font="./images/vbgamez/newuserbars/Trebuchet_MS_Bold_Italic.ttf" enabled="1" width="0"><![CDATA[{siteurl}]]></config>
+	<config fontsize="8" radius="0" repeat_x="233" repeat_y="42" fontcolor="" font="" enabled="1" width="0"><![CDATA[Location]]></config>
+	<config fontsize="0" radius="0" repeat_x="100" repeat_y="85" fontcolor="" font="" enabled="1" width="0"><![CDATA[{map}]]></config>
+	<config fontsize="0" radius="0" repeat_x="233" repeat_y="56" fontcolor="" font="" enabled="1" width="0"><![CDATA[{country}]]></config>
+	<config fontsize="8" radius="0" repeat_x="100" repeat_y="70" fontcolor="" font="" enabled="1" width="0"><![CDATA[Map:]]></config>
+</userbar>

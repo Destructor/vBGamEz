@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<frame name="Large custom frame" description="" width="0" height="160" is_configure="1">
+	<framecode><![CDATA[<style type="text/css">
+  A:Link{ Color: {vb:raw vbg_style.border}; Text-decoration: none}
+  A:Visited{ Color: {vb:raw vbg_style.border}; Text-decoration: none}
+  A:Hover{ Color: {vb:raw vbg_style.border}; Text-decoration: underline}
+
+td, body {font-family: tahoma, verbana, arial, helvetica; font-size:11px;}
+</style>
+
+<table border="0" width="100%" bgcolor="{vb:raw vbg_style.border}" cellspacing="1" cellpadding="2">
+					<tr>
+						<td bgcolor="{vb:raw vbg_style.background}">
+						<table border="0" width="100%" style="margin-top: 0; margin-bottom: 0">
+							<tr>
+								<td style="font-family: tahoma, verbana, arial, helvetica; font-size: 11px; heigth: 162;" width="100%" colspan="2">
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0" style="margin-top: 0; margin-bottom: 3">
+									<tr>
+										<td width="19">
+								 <img style="vertical-align: middle;" src="{vb:raw misc.icon_game}" alt="" /></td>
+										<td><font face="Arial" style="color: {vb:raw vbg_style.text}; font-size: 11px; text-decoration: none; font-weight:700">{vb:raw misc.text_game}</font></td>
+									</tr>
+								</table>
+								<table border="0" width="100%" cellspacing="0" cellpadding="0">
+
+							<tr>
+								<td>
+								<table style="height: 36;" border="0" width="100%" cellspacing="1" cellpadding="3" bgcolor="{vb:raw vbg_style.border}">
+									<tr>
+										<td bgcolor="{vb:raw vbg_style.tablebackground}" valign="top">
+								<p style="margin-top: 0; margin-bottom: 0">
+								<font color="{vb:raw vbg_style.border}"><b>
+								<font color="7c3e00">
+								<a target="_blank" href="{vb:raw vboptions.vbgamez_path}?do=view&amp;id={vb:raw server.o.id}">
+								<font color="{vb:raw vbg_style.texttitle}" style="font-size: 11px" face="Arial">
+								<u>{vb:raw server.s.name}</u></font></a></font></b></font></p></td>
+									</tr>
+								</table>
+								</td>
+							</tr>
+						</table>
+								</td>
+
+							</tr>
+<vb:if condition="$_REQUEST['showmap'] ==1">
+<tr>
+<td style="font-family: tahoma,verbana,arial,helvetica; font-size: 11px; background-image:url({vb:raw misc.image_map_password}); background-repeat:no-repeat; background-position:center" colspan="2" width="100%">
+<p style="margin-top: 0pt; margin-bottom: 0pt;" align="center">
+<a target="_blank" href="{vb:raw vboptions.vbgamez_path}?do=view&amp;id={vb:raw server.o.id}"><img src="{vb:raw misc.image_map}" alt="" style="border: 1px solid rgb(50, 50, 50);" border="0" width="100%" height="164" /></a></p></td>
+</tr>
+</vb:if>
+							<tr>
+								<td style="font-family: tahoma, verbana, arial, helvetica; font-size: 11px" colspan="2">
+								<table border="0" width="100%" id="table2" cellspacing="0" cellpadding="0">
+									<tr>
+										<td><font face="Arial" style="font-size: 10px; font-weight: 700" color="{vb:raw vbg_style.text}">IP: </font></td>
+
+										<td>
+										<p align="right"><font face="Arial" style="font-size: 10px; font-weight: 700" color="{vb:raw vbg_style.texttitle}"><a style="color: {vb:raw vbg_style.texttitle};" href="{vb:raw connectlink}" target="_blank">{vb:raw server.b.ip}:{vb:raw server.b.c_port}</a></font>&nbsp;<vb:if condition="$misc['location_image']"><img src="{vb:raw misc.location_image}" alt="{vb:raw server.i.country} {vb:raw server.i.city}" title="{vb:raw server.i.country} {vb:raw server.i.city}"/></vb:if></p></td>
+									</tr>
+								</table>
+								</td>
+							</tr>
+
+							<tr>
+								<td style="font-family: tahoma, verbana, arial, helvetica; font-size: 11px" colspan="2">
+
+								<table border="0" width="100%" cellspacing="0" cellpadding="0">
+									<tr>
+										<td><font face="Arial" style="font-size: 10px; font-weight: 700" color="{vb:raw vbg_style.text}">{vb:rawphrase vbgamez_map}: </font></td>
+										<td>
+										<p align="right"><font face="Arial" style="font-size: 10px; font-weight: 700" color="{vb:raw vbg_style.text}">{vb:raw server.s.map}</font></p></td>
+									</tr>
+								</table>
+								</td>		
+							</tr>
+
+							<tr>
+								<td style="font-family: tahoma, verbana, arial, helvetica; font-size: 11px">
+<p style="margin-top: 0; margin-bottom: 0"><font face="Arial" style="font-size: 10px; font-weight: 700" color="{vb:raw vbg_style.text}">
+{vb:phrase vbgamez_players}:</font></p></td><td style="font-family: tahoma, verbana, arial, helvetica; font-size: 11px">
+<p align="right" style="margin-top: 0; margin-bottom: 0">
+<font face="tahoma, verbana, arial, helvetica;" style="font-size: 10px; " color="{vb:raw vbg_style.text}">
+{vb:raw server.s.players}/{vb:raw server.s.playersmax}</font></p></td>
+							</tr>
+							</table>
+<div align="center">
+<table border="0" width="97%" cellspacing="0" cellpadding="0">
+
+<tr>
+<td colspan="2" height="18">
+
+
+
+<div style="padding: 0px; border: 1px solid {vb:raw vbg_style.border}; background-color: {vb:raw vbg_style.tablebackground}; height: 4px; font-size: 0;">
+<div style="width: {vb:raw playersline}%; background-color: {vb:raw vbg_style.texttitle}; height: 4px;"></div>
+</div></td>
+							</tr>
+						</table></div>
+<vb:if condition="$_REQUEST['showplayers'] ==1">
+<div style="height:100px; width:96%; margin:2px; padding:2px; border:solid; border-color={vb:raw vbg_style.border}; background={vb:raw vbg_style.tablebackground}; border-width:1px; overflow:auto;">
+<table width="100%">
+					{vb:raw players}
+
+				</table></div>
+</vb:if>
+
+<vb:if condition="$_REQUEST['showgraphic'] ==1">
+<div style="margin:2px; padding:2px; border:solid; border-color={vb:raw vbg_style.border}; background={vb:raw vbg_style.tablebackground}; border-width:1px;">
+<img src="{vb:raw vboptions.vbgamez_path}?do=getgraphic2&amp;id={vb:raw server.o.id}&amp;type=<vb:if condition="$vboptions[vbgamez_enabled_graphics_bitfield] & 8">1<vb:else />{vb:raw defaultGraphicId}</vb:if>&amp;width=230&amp;height=65" />
+</div>
+</vb:if>
+						<p align="right" style="margin-top: 0; margin-bottom: 0">
+						<font face="Arial"><span style="font-size: 10px" lang="en-us">
+						<a href="{vb:raw vboptions.vbgamez_path}" target="_blank"><font color="{vb:raw vbg_style.scorecolor}">{vb:rawphrase vbgamez_monitoring}</font></a></span></font></p>
+						</td>
+					</tr>
+				</table>]]></framecode>
+	<framecodeplayers><![CDATA[					<tr>
+						<td><font color="{vb:raw vbg_style.scorecolor}" style="font-size: 9px; font-weight:700" face="Arial">{vb:raw playerid}</font></td>
+
+                        <td style="font-family: tahoma, verbana, arial, helvetica">
+						<font color="{vb:raw vbg_style.scorecolor}" style="font-size: 10px">{vb:raw player.name}</font></td>
+						<td style="text-align: right; font-family:tahoma, verbana, arial, helvetica; font-size:11px">
+						<font color="{vb:raw vbg_style.scorecolor}" style="font-size: 10px; font-weight:700" face="Arial">{vb:raw player.score}</font></td>
+					</tr>]]></framecodeplayers>
+	<framecodenoplayers><![CDATA[<tr>
+	<td style="font-family: tahoma,verbana,arial,helvetica; font-size: 11px;" valign="middle" width="100%" height="80">
+						<font style="font-size: 10px;" color="{vb:raw vbg_style.text}"><div align="center"><b>{vb:phrase vbgamez_no_players_info}</b></div></font></td>
+					</tr>
+]]></framecodenoplayers>
+	<stylevar title="Title color" description="" order="5" default="#FFFF00" variable="texttitle" enabled="1" type="0" addwidth="0" addheight="0"><![CDATA[1]]></stylevar>
+	<stylevar title="Background tables" description="" order="3" default="#383838" variable="tablebackground" enabled="1" type="0" addwidth="0" addheight="0"><![CDATA[2]]></stylevar>
+	<stylevar title="Main text" description="" order="4" default="#FFFFFF" variable="text" enabled="1" type="0" addwidth="0" addheight="0"><![CDATA[3]]></stylevar>
+	<stylevar title="Border" description="" order="1" default="#323232" variable="border" enabled="1" type="0" addwidth="0" addheight="0"><![CDATA[4]]></stylevar>
+	<stylevar title="Color points" description="" order="6" default="#CCCCCC" variable="scorecolor" enabled="1" type="0" addwidth="0" addheight="0"><![CDATA[5]]></stylevar>
+	<stylevar title="General background" description="" order="2" default="#4E4E4E" variable="background" enabled="1" type="0" addwidth="0" addheight="0"><![CDATA[6]]></stylevar>
+	<stylevar title="Show map" description="" order="7" default="checked" variable="showmap" enabled="1" type="checkbox" addwidth="0" addheight="170"><![CDATA[7]]></stylevar>
+	<stylevar title="Show players" description="" order="8" default="checked" variable="showplayers" enabled="1" type="checkbox" addwidth="0" addheight="110"><![CDATA[8]]></stylevar>
+	<stylevar title="Show statistics for 24 hours" description="" order="9" default="0" variable="showgraphic" enabled="1" type="checkbox" addwidth="0" addheight="75"><![CDATA[9]]></stylevar>
+	<stylevar title="Size (in pixels)" description="(from 140px to 450px)" order="8" default="255" variable="size" enabled="1" type="input" addwidth="SET_DEFAULT_VALUE" addheight="0"><![CDATA[10]]></stylevar>
+</frame>

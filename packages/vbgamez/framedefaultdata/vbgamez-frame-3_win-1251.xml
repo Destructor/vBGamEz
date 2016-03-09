@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<frame name="Small custom frame" description="" width="0" height="0" is_configure="1">
+	<framecode><![CDATA[<!DOCTYPE HTML PUBLIC  "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+	<html><head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+	<script type="text/javascript">
+
+	/***********************************************
+	* Cross browser Marquee II- © Dynamic Drive (www.dynamicdrive.com)
+	* This notice MUST stay intact for legal use
+	* Visit http://www.dynamicdrive.com/ for this script and 100s more.
+	***********************************************/
+
+	var delayb4scroll=2 //Specify initial delay before marquee starts to scroll on page (2000=2 seconds)
+	var marqueespeed=1 //Specify marquee scroll speed (larger is faster 1-10)
+	var pauseit=1 //Pause marquee onMousever (0=no. 1=yes)?
+
+	////NO NEED TO EDIT BELOW THIS LINE////////////
+
+	var copyspeed=marqueespeed
+	var pausespeed=(pauseit==0)? copyspeed: 0
+	var actualwidth=''
+
+	function scrollmarquee(){
+	if (parseInt(cross_marquee.style.left)>(actualwidth*(-1)+8))
+	cross_marquee.style.left=parseInt(cross_marquee.style.left)-copyspeed+"px"
+	else
+	cross_marquee.style.left=parseInt(marqueewidth)+8+"px"
+	}
+
+	function initializemarquee(){
+	cross_marquee=document.getElementById("vmarquee")
+	cross_marquee.style.left=0
+	marqueewidth=document.getElementById("marqueecontainer").offsetWidth
+	actualwidth=cross_marquee.offsetWidth
+	if (window.opera || navigator.userAgent.indexOf("Netscape/7")!=-1){ //if Opera or Netscape 7x, add scrollbars to scroll and exit
+	cross_marquee.style.width=marqueewidth+"px"
+	cross_marquee.style.overflow="scroll"
+	return
+	}
+	setTimeout('lefttime=setInterval("scrollmarquee()",30)', delayb4scroll)
+	}
+
+	if (window.addEventListener)
+	window.addEventListener("load", initializemarquee, false)
+	else if (window.attachEvent)
+	window.attachEvent("onload", initializemarquee)
+	else if (document.getElementById)
+	window.onload=initializemarquee
+
+
+	</script>
+	<style type="text/css">
+	*{padding:0;margin:0;border:none;}
+	body{font-family:Tahoma,Geneva,sans-serif; font-size:12px; font-weight:bold;background:transparent;}
+	.title{margin:0 10px;padding:3px 0;text-align:center; font-weight: bold;overflow:hidden;white-space:nowrap;}
+	.ip1{display:none}
+	.ip2{font-size:10px;text-align:center}
+	.image_div{height: 100px; text-align:center; margin: 5px 0px }
+	.image{width:140px; height: 100px}
+	.status{width:40px; float:left; padding: 5px 5px 5px 5px}
+	.status0{text-align:right; padding: 5px 5px 5px 0px;overflow: hidden;}
+	.status1{text-align:right; padding: 5px 5px 5px 0px;overflow: hidden;}
+	.map_name{width:40px; float:left; padding: 5px 5px 5px 5px}
+	.map_name2{text-align:right; padding: 5px 5px 5px 0px; overflow: hidden;white-space:nowrap;}
+	.player{float:left; padding: 5px 0px 5px 5px}
+	.player2{text-align:right; padding: 5px 5px 5px 0px;overflow: hidden; cursor:pointer; text-decoration:underline}
+	.player_list{float:left;width:100%;text-align:center;cursor:pointer;}
+	.setting{float:left;width:100%;text-align:center;cursor:pointer;}
+	</style>
+
+	<style type="text/css">
+	body{
+		color:{vb:raw vbg_style.fontcolor};
+	}
+	body{
+		background-color:{vb:raw vbg_style.backgroundcolor};
+	}
+	.title{
+		color:{vb:raw vbg_style.servernamecolor};
+	}
+	.title{
+		background-color:{vb:raw vbg_style.servernamebackground};
+	}
+	.ip2 a{
+		color:{vb:raw vbg_style.ipcolor} !important;
+	}
+	.ip2{
+		background-color:{vb:raw vbg_style.ipbackground} !important;
+	}
+	.status1{
+		color:{vb:raw vbg_style.oncolor};
+	}
+	.status0{
+		color:{vb:raw vbg_style.offcolor};
+	}
+	a:visited,a:link{
+		color:{vb:raw vbg_style.linkcolor};
+	}
+	a:hover{
+		color:{vb:raw vbg_style.linkhover};
+	}
+	.image{
+		width:140px;height:100px;
+	}
+	.image_div{
+		height:100px;
+	}
+	</style>
+	<script type="text/javascript">
+	function vbg_detalis(serverid)
+	{
+	        window.open('{vb:raw vboptions.vbgamez_path}?do=viewdetalis&id=' + serverid, 'vbg_viewdetalis_' + serverid,'statusbar=no,menubar=no,toolbar=no,scrollbars=yes,resizable=yes,width=900,height=500');
+	}
+	</script>
+	</head>
+	<body>
+
+	<vb:if condition="$_REQUEST['merque']"><div id="marqueecontainer" onMouseover="copyspeed=pausespeed" onMouseout="copyspeed=marqueespeed"><div id="vmarquee" style="position: absolute;"  class="title">{vb:raw server.s.name}</div></div><br /><br /><vb:else /><div class="title">{vb:raw server.s.name}</div></vb:if>
+	<div class="ip1">IP:</div><div class="ip2"><a href="{vb:raw connectlink}">{vb:raw server.b.ip}:{vb:raw server.b.c_port}</a></div>
+	<div class="image_div"><a href="{vb:raw vboptions.vbgamez_path}?do=view&amp;id={vb:raw server.o.id}" target="_blank" title="{vb:raw server.s.name}"><img class="image" src="{vb:raw misc.image_map}" alt="{vb:raw server.s.map}"></a></div>
+	<div class="status">{vb:phrase vbgamez_status}:</div><div class="status{vb:raw server.b.status}">{vb:raw misc.text_status}</div>
+
+	<div class="map_name">{vb:rawphrase vbgamez_map}:</div><div class="map_name2" title="{vb:raw server.s.map}">{vb:raw server.s.map}</div>
+	<div class="player">{vb:phrase vbgamez_players}:</div><div class="player2" onclick="vbg_detalis({vb:raw server.o.id});return false;">{vb:raw server.s.players}/{vb:raw server.s.playersmax}</div>
+	<a class="player_list" href="{vb:raw vboptions.vbgamez_path}?do=view&amp;id={vb:raw server.o.id}" target="_blank">{vb:phrase vbgamez_whoplaying}</a>
+
+	</body>
+	</html>]]></framecode>
+	<framecodeplayers />
+	<framecodenoplayers />
+	<stylevar title="Width block" description="" order="0" default="160" variable="blockwidth" enabled="1" type="input" addwidth="SET_DEFAULT_VALUE" addheight=""><![CDATA[21]]></stylevar>
+	<stylevar title="Height block" description="" order="0" default="260" variable="blockheight" enabled="1" type="input" addwidth="" addheight="SET_DEFAULT_VALUE"><![CDATA[22]]></stylevar>
+	<stylevar title="Color font" description="" order="0" default="#DBDBAA" variable="fontcolor" enabled="1" type="colorpicker" addwidth="" addheight=""><![CDATA[23]]></stylevar>
+	<stylevar title="Background color" description="" order="0" default="#272C2F" variable="backgroundcolor" enabled="1" type="colorpicker" addwidth="" addheight=""><![CDATA[24]]></stylevar>
+	<stylevar title="Scroll through name of the server" description="" order="0" default="checked" variable="merque" enabled="1" type="checkbox" addwidth="" addheight=""><![CDATA[25]]></stylevar>
+	<stylevar title="Color of server name" description="" order="0" default="#DBDBAA" variable="servernamecolor" enabled="1" type="colorpicker" addwidth="" addheight=""><![CDATA[26]]></stylevar>
+	<stylevar title="Background color of server name" description="" order="0" default="#272C2F" variable="servernamebackground" enabled="1" type="colorpicker" addwidth="" addheight=""><![CDATA[27]]></stylevar>
+	<stylevar title="Color IP address" description="" order="0" default="#FFFFFF" variable="ipcolor" enabled="1" type="colorpicker" addwidth="" addheight=""><![CDATA[28]]></stylevar>
+	<stylevar title="Background color IP address" description="" order="0" default="#272C2F" variable="ipbackground" enabled="1" type="colorpicker" addwidth="" addheight=""><![CDATA[29]]></stylevar>
+	<stylevar title="Color &quot;Enable&quot;" description="" order="0" default="#007F00" variable="oncolor" enabled="1" type="colorpicker" addwidth="" addheight=""><![CDATA[30]]></stylevar>
+	<stylevar title="Color &quot;Enable&quot;" description="" order="0" default="#FF0000" variable="offcolor" enabled="1" type="colorpicker" addwidth="" addheight=""><![CDATA[31]]></stylevar>
+	<stylevar title="Color links" description="" order="0" default="#DBDBAA" variable="linkcolor" enabled="1" type="colorpicker" addwidth="" addheight=""><![CDATA[32]]></stylevar>
+	<stylevar title="Color links induced" description="" order="0" default="#F5F5AA" variable="linkhover" enabled="1" type="colorpicker" addwidth="" addheight=""><![CDATA[33]]></stylevar>
+</frame>

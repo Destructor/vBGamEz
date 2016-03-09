@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<userbar name="Userbar mini" description="" background="./images/vbgamez/newuserbars/small.png" textcolor="rgb(255,255,255)" font="./images/vbgamez/newuserbars/Arial.ttf" fontsize="8" fieldname="global">
+	<config fontsize="0" radius="0" repeat_x="220" repeat_y="24" fontcolor="" font="" enabled="1" width="0"><![CDATA[Map: {map}]]></config>
+	<config fontsize="0" radius="0" repeat_x="140" repeat_y="24" fontcolor="" font="" enabled="1" width="0"><![CDATA[Players: {players}]]></config>
+	<config fontsize="0" radius="0" repeat_x="30" repeat_y="24" fontcolor="" font="" enabled="1" width="0"><![CDATA[{ip}]]></config>
+	<config fontsize="0" radius="0" repeat_x="30" repeat_y="10" fontcolor="" font="" enabled="1" width="0"><![CDATA[{name}]]></config>
+	<config fontsize="0" radius="0" repeat_x="0" repeat_y="3" fontcolor="" font="" enabled="1" width="20"><![CDATA[{icon}]]></config>
+</userbar>

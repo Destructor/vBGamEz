@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<frame name="Middle custom frame" description="" width="0" height="153" is_configure="1">
+	<framecode><![CDATA[<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html  xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Website module</title>
+		<style type="text/css">
+*{
+	padding:0;
+	margin:0;
+	border:none;
+	white-space: nowrap;
+}
+#all{
+	background-color: {vb:raw vbg_style.backgroundcolor};
+	font-family: Tahoma,Geneva,sans-serif;
+	font-size: 11px;
+	color: {vb:raw vbg_style.fontcolor};
+	border: 1px solid {vb:raw vbg_style.bordercolor};
+}
+#all .border{
+	background-color: {vb:raw vbg_style.bordercolor};
+	color: {vb:raw vbg_style.borderfontcolor};
+	padding: 1px;
+	height: 16px;
+	overflow: hidden;
+}
+.border div{
+	line-height: 16px;
+	height: 16px;
+}
+a, a:hover, a:visited, a:link{
+	color: {vb:raw vbg_style.linkcolor};
+	text-decoration: none;
+}
+.border a, .border a:hover, .border a:visited, .border a:link {
+	color: {vb:raw vbg_style.borderfontcolor};
+}
+#all .clearer{
+	clear: both;
+	height: 0;
+	line-height: 0;
+	font-size: 0;
+}
+#all .sname{
+	margin: 2px;
+	padding: 1px 2px;
+	border: 1px solid {vb:raw vbg_style.bordercolor};
+	background-color: {vb:raw vbg_style.backgroundcolor2};
+	height: 26px;
+	line-height: 13px;
+	color: {vb:raw vbg_style.titlecolor};
+	overflow: hidden;
+	font-weight: bold;
+	white-space: normal;
+}
+#all .line{
+	height: 13px;
+	margin: 2px 4px;
+	overflow: hidden;
+}
+.cleft{
+	float: left;
+	padding-right: 5px;
+	font-weight: bold;
+}
+.fleft{
+	float: left;
+}
+.fright{
+	padding-left: 2px;
+	float: right;
+}
+.cright{
+	overflow: hidden;
+	text-align: right;
+}
+.pbox{
+	padding: 1px;
+	border: 1px solid {vb:raw vbg_style.bordercolor};
+	background-color: {vb:raw vbg_style.backgroundcolor2};
+	height: 8px;
+	font-size: 0;
+}
+.pboxin{
+	background-color: {vb:raw vbg_style.bordercolor};
+	width: {vb:raw playersline}%;
+	height: 8px;
+}
+.map {
+	margin: 2px 0;
+	text-align: center;
+}
+.map img{
+	border: 1px solid {vb:raw vbg_style.bordercolor};
+	width: 160px;
+	height: 114px;
+}
+.scrollable{
+	margin: 2px;
+	padding: 2px 4px;
+	background-color: {vb:raw vbg_style.backgroundcolor2};
+	border: 1px solid {vb:raw vbg_style.bordercolor};
+	overflow-x: hidden;
+	overflow-y: auto;
+	height: {vb:raw vbg_style.playerswidth}px;
+}
+.scrollable div{
+	float: left;
+	overflow: hidden;
+	text-align: left;
+	padding-right: 3px;
+	line-height: 13px;
+}
+.scrollable .n{
+	width: 18px;
+}
+.scrollable .pname{
+	width: 90px;
+}
+.scrollable .s{
+	float: none;
+	text-align: right;
+	padding-right: 0;
+}
+.scrollable .elist{
+	padding: 42px 0;
+	text-align: center;
+	float: none;
+}
+.status1{
+	padding-left: 12px;
+	background: transparent url('{vb:raw vboptions.bburl}/{vb:stylevar imgdir_statusicon}/user-online.png') no-repeat left center;
+}
+.status0{
+	padding-left: 12px;
+	background: transparent url('{vb:raw vboptions.bburl}/{vb:stylevar imgdir_statusicon}/user-offline.png') no-repeat left center;
+}
+</style>
+</head>
+<body>
+
+<div id="all">
+	<div class="border">
+
+		<div class="fleft">
+			<vb:if condition="$misc['location_image']"><img src="{vb:raw misc.location_image}" alt="{vb:raw server.i.country} {vb:raw server.i.city}" title="{vb:raw server.i.country} {vb:raw server.i.city}"/></vb:if>
+		</div>
+		<div class="fright">
+			<img style="vertical-align: middle;" src="{vb:raw misc.icon_game}" alt="" />
+		</div>
+		<div class="fright">{vb:raw misc.text_game}</div>
+		<div class="clearer"></div>
+
+	</div>
+	<div class="sname">{vb:raw server.s.name}</div>
+	<div class="line">
+		<div class="cleft">IP:</div>
+		<div class="cright">
+                        <a href="{vb:raw connectlink}" target="_blank" class="status{vb:raw server.b.status}">{vb:raw server.b.ip}:{vb:raw server.b.c_port}</a>
+		</div>
+
+		<div class="clearer"></div>
+	</div>
+	<div class="line">
+		<div class="cleft">{vb:phrase vbgamez_players}:</div>
+		<div class="cright">{vb:raw server.s.players}/{vb:raw server.s.playersmax}</div>
+		<div class="clearer"></div>
+	</div>
+	<div class="line">
+
+		<div class="pbox">
+			<div class="pboxin"></div>
+		</div>
+	</div>
+	<div class="line">
+		<div class="cleft">{vb:rawphrase vbgamez_map}:</div>
+		<div class="cright">{vb:raw server.s.map}</div>
+		<div class="clearer"></div>
+
+	</div>
+	<div class="map">
+		<img src="{vb:raw misc.image_map}" alt="{vb:raw server.s.map}" title="{vb:raw server.s.map}" />
+	</div>
+        <vb:if condition="$_REQUEST['showplayers'] == 1">
+	<div class="line">
+		<div class="cleft">{vb:phrase vbgamez_players_on_server}:</div>
+		<div class="clearer"></div>
+	</div>
+
+	<div class="scrollable">
+		{vb:raw players}
+	</div>
+        </vb:if>
+	<div class="border">
+		<div class="fright">
+			<a href="{vb:raw vboptions.vbgamez_path}" target="_blank">
+				<img src="{vb:raw vboptions.bburl}/favicon.ico"/>
+			</a>
+		</div>
+
+		<div class="fright">
+                        <a href="{vb:raw vboptions.vbgamez_path}" target="_blank">{vb:rawphrase vbgamez_monitoring}</a>
+		</div>
+	</div>
+</div>
+</body>
+</html>]]></framecode>
+	<framecodeplayers><![CDATA[		<div class="n">{vb:raw playerid}</div>
+		<div class="pname">{vb:raw player.name}</div>
+
+		<div class="s">{vb:raw player.score}</div>]]></framecodeplayers>
+	<framecodenoplayers><![CDATA[<div class="elist">{vb:phrase vbgamez_no_players_info}</div>]]></framecodenoplayers>
+	<stylevar title="Color font" description="" order="0" default="#DDDDDD" variable="fontcolor" enabled="1" type="colorpicker" addwidth="0" addheight="0"><![CDATA[11]]></stylevar>
+	<stylevar title="Background color" description="" order="0" default="#272C2F" variable="backgroundcolor" enabled="1" type="colorpicker" addwidth="0" addheight="0"><![CDATA[12]]></stylevar>
+	<stylevar title="Color border" description="" order="0" default="#575C5F" variable="bordercolor" enabled="1" type="colorpicker" addwidth="0" addheight="0"><![CDATA[13]]></stylevar>
+	<stylevar title="Color font on border" description="" order="0" default="#DDDDDD" variable="borderfontcolor" enabled="1" type="colorpicker" addwidth="0" addheight="0"><![CDATA[14]]></stylevar>
+	<stylevar title="Color of server name" description="" order="0" default="#FFFFFF" variable="titlecolor" enabled="1" type="colorpicker" addwidth="0" addheight="0"><![CDATA[15]]></stylevar>
+	<stylevar title="Background color 2" description="" order="0" default="#171C1F" variable="backgroundcolor2" enabled="1" type="colorpicker" addwidth="0" addheight="0"><![CDATA[16]]></stylevar>
+	<stylevar title="Color links" description="" order="0" default="#C7C750" variable="linkcolor" enabled="1" type="colorpicker" addwidth="0" addheight="0"><![CDATA[17]]></stylevar>
+	<stylevar title="Width block" description="(îò 140px äî 350px)" order="0" default="170" variable="blockwidth" enabled="1" type="input" addwidth="SET_DEFAULT_VALUE" addheight="0"><![CDATA[18]]></stylevar>
+	<stylevar title="Show players" description="" order="0" default="checked" variable="showplayers" enabled="1" type="checkbox" addwidth="0" addheight="125"><![CDATA[19]]></stylevar>
+	<stylevar title="Height block with players" description="" order="0" default="100" variable="playerswidth" enabled="1" type="input" addwidth="0" addheight="ADD_TO_CURRENT_VALUE"><![CDATA[20]]></stylevar>
+</frame>

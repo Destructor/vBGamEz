@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<navgroups product="vbgamez">
+	<navgroup phrase="vbgamez" displayorder="10">	
+		<navoption displayorder="1">
+			<phrase>vbgamez_servers</phrase>
+			<link>vbgamez_admin.php?do=list</link>
+		</navoption>
+		<navoption displayorder="2">
+			<phrase>vbgamez_add_server_admin</phrase>
+			<link>vbgamez_admin.php?do=add</link>
+		</navoption>
+		<navoption displayorder="3">
+			<phrase>vbgamez_moderate</phrase>
+			<link>../{$vbulletin->config[Misc][modcpdir]}/vbgamez_moderate.php?do=moderate</link>
+		</navoption>
+		<navoption displayorder="4">
+			<phrase>vbgamez_view_uploaded_maps</phrase>
+			<link>../{$vbulletin->config[Misc][modcpdir]}/vbgamez_moderate.php?do=custom_maps</link>
+		</navoption>
+		<navoption displayorder="5">
+			<phrase>vbgamez_userbarmgr</phrase>
+			<link>vbgamez_admin.php?do=manageuserbar</link>
+		</navoption>
+		<navoption displayorder="6">
+			<phrase>vbgamez_fieldmanager</phrase>
+			<link>vbgamez_admin.php?do=fields</link>
+		</navoption>
+		<navoption displayorder="7">
+			<phrase>vbgamez_framemanager</phrase>
+			<link>vbgamez_admin.php?do=framemanager</link>
+		</navoption>
+		<navoption displayorder="8">
+			<phrase>vbgamez_subscriptions_log_title</phrase>
+			<link>vbgamez_admin.php?do=subscribtions</link>
+		</navoption>
+		<navoption displayorder="9">
+			<phrase>diagnostics</phrase>
+			<link>vbgamez_admin.php?do=diagnostic</link>
+		</navoption>
+		<navoption displayorder="10">
+			<phrase>vbgamez_admincp_cache_clear</phrase>
+			<link>vbgamez_admin.php?do=clearcache</link>
+		</navoption>
+		<navoption displayorder="11">
+			<phrase>vbgamez_admincp_clear_graphics</phrase>
+			<link>vbgamez_admin.php?do=clearcachestats</link>
+		</navoption>
+	</navgroup>
+</navgroups>

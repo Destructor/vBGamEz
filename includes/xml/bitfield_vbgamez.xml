@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<bitfields product="vbgamez">
+	<bitfielddefs>
+		<group name="vbgnocache">
+			<group name="vbgshareoptions">
+				<bitfield name="vbg_share_facebook">1</bitfield>
+				<bitfield name="vbg_share_mailru">2</bitfield>
+				<bitfield name="vbg_share_vk">4</bitfield>
+				<bitfield name="vbg_share_twitter">8</bitfield>
+				<bitfield name="vbg_share_odnoklassniki">16</bitfield>
+				<bitfield name="vbg_share_friendfeed">32</bitfield>
+				<bitfield name="vbg_share_livejournal">64</bitfield>
+				<bitfield name="vbg_share_yaru">128</bitfield>
+			</group>
+			<group name="vbenabledgraphics">
+				<bitfield name="month_stats">1</bitfield>
+				<bitfield name="month_6_stats">2</bitfield>
+				<bitfield name="year_stats">4</bitfield>
+				<bitfield name="hours_24_stats">8</bitfield>
+			</group>
+		</group>
+	</bitfielddefs>
+</bitfields>
