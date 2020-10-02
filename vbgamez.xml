@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<moduleinfo>
+	<module>
+		<title>vBGamEz</title>
+		<identifier>vbgamez</identifier>
+		<filename>vbgamez.php</filename>
+		<inctype>php_file</inctype>
+		<templatelist>vbgamez_cmps
+
+vbgamez_cmps_bits</templatelist>
+		<parent />
+		<colspan>0</colspan>
+		<formcode />
+		<useshell>1</useshell>
+		<link />
+		<options>0</options>
+	</module>
+	<templates>
+		<vbgamez_cmps><![CDATA[<div class="blockrow">
+<script type="text/javascript" src="clientscript/vbulletin_ajax_vbgamez.js?v={vb:raw vboptions.simpleversion}"></script>
+               <div id="servers">
+                         {vb:raw vbgamez_serverbits}
+               </div>
+</div>]]></vbgamez_cmps>
+		<vbgamez_cmps_bits><![CDATA[<li <vb:if condition="$server[i][stick]">style="background: {vb:stylevar vbgamez_featured} none; font-weight:bold; border: {vb:stylevar vbgamez_featured_border};"</vb:if>>
+
+<img alt="" src="{vb:raw misc.icon_game}" title="{vb:raw misc.text_type_game}" style="vertical-align: middle;"/> <a href="{vb:raw vboptions.vbgamez_path}?{vb:raw session.sessionurl}do=view&amp;id={vb:raw server.o.id}">{vb:raw server.s.name}</a>
+
+<vb:if condition="$server[i][pirated]">
+<img src="images/vbgamez/pirated.png" alt="{vb:phrase vbgamez_server_pirated}" title="{vb:phrase vbgamez_server_pirated}" style="vertical-align: middle;"/>
+
+<vb:elseif condition="$server[i][steam]" />
+<img src="images/vbgamez/steam.ico" title="Steam" alt="Steam" style="vertical-align: middle;"/>
+</vb:if>
+
+						<vb:if condition="$vboptions['vbgamez_show_offline'] == '0'">
+						<img src="{vb:raw misc.image_status}" title="{vb:raw misc.text_status}" alt="{vb:raw misc.text_status}" style="vertical-align: middle;" />
+						</vb:if>
+<vb:if condition="$server[i][stick]">
+<img style="vertical-align: middle;" alt="{vb:rawphrase vbgamez_recomend_server}" title="{vb:rawphrase vbgamez_recomend_server}" src="{vb:stylevar imgdir_misc}/star.png" />
+</vb:if>
+						<br />
+
+  <vb:if condition="$vboptions[vbgamez_show_map] AND $misc['has_map_image']">
+  {vb:rawphrase vbgamez_map}: 
+   <a href="#" onclick="return false;" onmouseover="vBG_Show_Overlay('{vb:raw vboptions.vbgamez_path}?do=showmap&amp;status={vb:raw server.b.status}&amp;type={vb:raw server.b.type}&amp;game={vb:raw server.s.game}&amp;map={vb:raw server.s.map}');" onmouseout="vBG_Hide_Overlay()">{vb:raw server.s.map}</a>
+   <vb:else />
+    {vb:rawphrase vbgamez_map}: {vb:raw server.s.map}
+  </vb:if>
+
+							<br />
+							{vb:rawphrase vbgamez_players}: <a href="javascript://" onclick="vbg_whoplaying({vb:raw server.o.id});">{vb:raw server.s.players}/{vb:raw server.s.playersmax}</a>
+							<br />
+							{vb:rawphrase vbgamez_ip}: <a href="{vb:raw connectlink}" targer="_blank">{vb:raw server.b.ip}:{vb:raw server.b.c_port}</a>&nbsp;<vb:if condition="$misc['location_image']"><img src="{vb:raw misc.location_image}" alt="{vb:raw server.i.country} {vb:raw server.i.city}" title="{vb:raw server.i.country} {vb:raw server.i.city}"/></vb:if>
+
+  <vb:if condition="$misc[show_adv_info]">
+
+                  <vb:if condition="$vboptions[vbgamez_ratingsystem_enable]">
+
+							<br />
+							{vb:rawphrase vbgamez_rating}: <span id="rating_{vb:raw server.o.id}">{vb:raw server.i.rating}</span>
+<vb:if condition="!empty($vbulletin->options['vbgamez_rating_minus'])">
+ <a href="{vb:raw vboptions.vbgamez_path}?{vb:raw session.sessionurl}do=ratingminus&amp;serverid={vb:raw server.o.id}" onclick="vbg_rate({vb:raw server.o.id}, 'minus'); return false;"><img style="vertical-align: middle;" src="{vb:stylevar imgdir_cms}/arrow_down.png" alt="" /></a>
+</vb:if>
+
+<a href="{vb:raw vboptions.vbgamez_path}?{vb:raw session.sessionurl}do=ratingplus&amp;serverid={vb:raw server.o.id}" onclick="vbg_rate({vb:raw server.o.id}, 'plus'); return false;"><img style="vertical-align: middle;" src="{vb:stylevar imgdir_cms}/arrow_up.png" alt="" /></a>
+                  </vb:if>
+                  <vb:if condition="$vboptions[vbgamez_comments_enable]">
+
+	                                                <br />
+							{vb:rawphrase vbgamez_comments}: <a href="{vb:raw vboptions.vbgamez_path}?{vb:raw session.sessionurl}do=view&amp;id={vb:raw server.o.id}#comments">{vb:raw server.i.comments}</a>
+                  </vb:if>
+	                                                <br />
+							{vb:rawphrase vbgamez_views}: {vb:raw server.i.views}
+</vb:if>
+</li><br />]]></vbgamez_cmps_bits>
+	</templates>
+	<file><![CDATA[<?php
+
+               require_once('./packages/vbgamez/bootstrap.php');
+
+               require_once('./packages/vbgamez/comments.php');
+
+	       //vB_vBGamez_Route::setUrls();
+
+
+
+               require_once(DIR . '/vb/vb.php');
+
+               require_once(DIR . '/vb/phrase.php');
+
+               vB::init(false);
+			   define('VBG_IS_BLOCK', true);
+
+
+               $set_sqlsort = $mod_options['vbgamez_cmps_sort'];
+
+               $set_sortorder = $mod_options['vbgamez_cmps_order'];
+
+               $ids = vB::$db->escape_string($mod_options['vbgamez_cmps_ids']);
+
+               $limit = vB::$db->escape_string($mod_options['vbgamez_cmps_limit']);
+			   $sticked = vB::$db->escape_string($mod_options['vbgamez_show_sticked']);
+
+
+                 switch ($set_sortorder)
+
+                 {
+
+	               case '1':
+
+		               $sortorder = 'asc';
+
+		               break;
+
+	               case '2':
+
+		               $sortorder = 'desc';
+
+		               break;
+
+	               default:
+
+		               $sqlsort = 'asc';
+
+                 }
+
+
+
+
+
+                 switch ($set_sqlsort)
+
+                 {
+
+	               case '3':
+
+		               $sqlsort = 'vbgamez.id';
+
+		               break;
+
+	               case '2':
+
+		               $sqlsort = 'vbgamez.cache_name';
+
+		               break;
+
+	               case '1':
+
+		               $sqlsort = 'vbgamez.cache_game';
+
+		               break;
+
+	               case '6':
+
+	               	         $sqlsort = 'vbgamez.comments';
+
+	               	       break;
+
+	               case '4':
+
+		                $sqlsort = 'vbgamez.cache_map';
+
+		               break;
+
+	               case '5':
+
+		               $sqlsort = 'vbgamez.cache_players';
+
+		               break;
+
+	               case '7':
+
+		               $sqlsort = 'vbgamez.views';
+
+		               break;
+
+	               case '8':
+
+		               $sqlsort = 'vbgamez.rating';
+
+		               break;
+
+	               default:
+
+		               $sqlsort = 'rating';
+
+                 }
+
+
+
+                 $server_list = vB_vBGamez::VBG_Sidebar("s", $sqlsort, $sortorder, $limit, $ids, $sticked);
+
+
+
+                 $server = array();
+
+                                         
+
+                         foreach($server_list AS $server)
+
+                         {
+
+                                      $misc   = vB_vBGamez::vbgamez_server_misc($server);
+
+                                      $server = vB_vBGamez::vbgamez_server_html($server);
+
+
+
+                                      $connectlink = vbgamez_software_link($server['b']['type'], $server['b']['ip'], $server['b']['c_port'], $server['b']['q_port'], $server['b']['s_port']);
+
+                                      $misc['show_adv_info'] = $mod_options['vbgamez_cmps_adv_info'];
+
+									$server['s']['name'] = fetch_trimmed_title($server['s']['name'], $vbulletin->options['vbgamez_blocks_trim']);
+                                $templater = vB_Template::create('vbgamez_cmps_bits');
+
+                                $templater->register('server', $server);
+
+                                $templater->register('connectlink', $connectlink);
+
+                                $templater->register('misc', $misc);
+
+
+
+                              $vbgamez_serverbits .= $templater->render(); 
+
+
+
+                         }
+
+
+
+               if(!empty($vbgamez_serverbits))
+
+               {
+
+                         $templater = vB_Template::create('vbgamez_cmps');
+
+                         $templater->register('vbgamez_serverbits', $vbgamez_serverbits);
+
+                         $home["$mods[modid]"]['content'] = $templater->render(); 
+
+               }
+
+?>]]></file>
+	<settings>
+		<vbgamez_cmps_ids>
+			<varname>vbgamez_cmps_ids</varname>
+			<grouptitle>adv_portal_vbgamez</grouptitle>
+			<value />
+			<defaultvalue />
+			<optioncode />
+			<displayorder>40</displayorder>
+			<serialize>0</serialize>
+			<title>Display...</title>
+			<description><![CDATA[ID's servers for display (separated by commas).<br />
+If empty - displayed all the servers.]]></description>
+		</vbgamez_cmps_ids>
+		<vbgamez_cmps_adv_info>
+			<varname>vbgamez_cmps_adv_info</varname>
+			<grouptitle>adv_portal_vbgamez</grouptitle>
+			<value>0</value>
+			<defaultvalue>0</defaultvalue>
+			<optioncode>yesno</optioncode>
+			<displayorder>50</displayorder>
+			<serialize>0</serialize>
+			<title>Additional information</title>
+			<description>Display additional information about the servers (rating, number of hits, number of comments) ?</description>
+		</vbgamez_cmps_adv_info>
+		<vbgamez_cmps_order>
+			<varname>vbgamez_cmps_order</varname>
+			<grouptitle>adv_portal_vbgamez</grouptitle>
+			<value>1</value>
+			<defaultvalue>2</defaultvalue>
+			<optioncode><![CDATA[<select name=\"$name\" " . $jsdefault_onchange . " class=\"bginput\" tabindex=\"1\">
+	<option " . iif($setting[value] == '1', 'selected=\"selected\"'). " value=\"1\">$vbphrase[vbgamez_asc]</option>
+
+	<option " . iif($setting[value] == '2', 'selected=\"selected\"'). " value=\"2\">$vbphrase[vbgamez_desc]</option>
+
+</select>]]></optioncode>
+			<displayorder>30</displayorder>
+			<serialize>0</serialize>
+			<title>Grouping servers</title>
+			<description>Choose the criterion by which to group servers.</description>
+		</vbgamez_cmps_order>
+		<vbgamez_cmps_limit>
+			<varname>vbgamez_cmps_limit</varname>
+			<grouptitle>adv_portal_vbgamez</grouptitle>
+			<value>5</value>
+			<defaultvalue>5</defaultvalue>
+			<optioncode />
+			<displayorder>10</displayorder>
+			<serialize>0</serialize>
+			<title>Number of output server</title>
+			<description><![CDATA[Enter the number of displayed servers. <br />Recommended values ??between 5 and 10.]]></description>
+		</vbgamez_cmps_limit>
+		<vbgamez_cmps_sort>
+			<varname>vbgamez_cmps_sort</varname>
+			<grouptitle>adv_portal_vbgamez</grouptitle>
+			<value>4</value>
+			<defaultvalue>8</defaultvalue>
+			<optioncode><![CDATA[<select name=\"$name\" " . $jsdefault_onchange . " class=\"bginput\" tabindex=\"1\">
+	<option " . iif($setting[value] == '1', 'selected=\"selected\"'). " value=\"1\">$vbphrase[vbgamez_by_game]</option>
+
+	<option " . iif($setting[value] == '2', 'selected=\"selected\"'). " value=\"2\">$vbphrase[vbgamez_by_server_name]</option>
+
+	<option " . iif($setting[value] == '3', 'selected=\"selected\"'). " value=\"3\">$vbphrase[vbgamez_by_id]</option>
+
+	<option " . iif($setting[value] == '4', 'selected=\"selected\"'). " value=\"4\">$vbphrase[vbgamez_by_map]</option>
+
+	<option " . iif($setting[value] == '5', 'selected=\"selected\"'). " value=\"5\">$vbphrase[vbgamez_by_players]</option>
+
+	<option " . iif($setting[value] == '6', 'selected=\"selected\"'). " value=\"6\">$vbphrase[vbgamez_by_comments]</option>
+
+	<option " . iif($setting[value] == '7', 'selected=\"selected\"'). " value=\"7\">$vbphrase[vbgamez_by_views]</option>
+
+	<option " . iif($setting[value] == '8', 'selected=\"selected\"'). " value=\"8\">$vbphrase[vbgamez_by_rating]</option>
+</select>]]></optioncode>
+			<displayorder>20</displayorder>
+			<serialize>0</serialize>
+			<title>Sort servers</title>
+			<description>Choose the criterion by which the servers will be sorted.</description>
+		</vbgamez_cmps_sort>
+		<vbgamez_show_sticked>
+			<varname>vbgamez_show_sticked</varname>
+			<grouptitle>adv_portal_vbgamez</grouptitle>
+			<value>1</value>
+			<defaultvalue>1</defaultvalue>
+			<optioncode>yesno</optioncode>
+			<displayorder>60</displayorder>
+			<serialize>0</serialize>
+			<title>Display fixed server?</title>
+			<description>Display fixed server first on the list?</description>
+		</vbgamez_show_sticked>
+	</settings>
+</moduleinfo>
